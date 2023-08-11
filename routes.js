@@ -8,6 +8,7 @@ const shopDetailsController = require('./controllers/shopDetailsController')
 const contactUsController = require('./controllers/contactUsController')
 const shopingCartController = require('./controllers/shopingcartController')
 const checkoutController = require('./controllers/checkoutController')
+const profileController = require('./controllers/profileController')
 
   router.get('/register',registerController.getRegisterData)
   router.get('/login',loginController.getLoginData)

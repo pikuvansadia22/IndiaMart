@@ -34,7 +34,7 @@ app.use(sessions({
 }));
 
 app.listen(3000, () => {
-    console.info('Server is up and running on PORT: 3000');
+    console.info('Server is up and running on PORT: http://localhost:3000');
 })
 
 // connect to db
