@@ -1,0 +1,33 @@
+const express = require("express");
+const router = express.Router();
+const registerController = require('./controllers/registerController')
+const loginController = require('./controllers/loginController')
+const categoryController = require('./controllers/categoryController')
+const shopgridController = require('./controllers/shopgridController')
+const shopDetailsController = require('./controllers/shopDetailsController')
+const contactUsController = require('./controllers/contactUsController')
+const shopingCartController = require('./controllers/shopingcartController')
+const checkoutController = require('./controllers/checkoutController')
+
+  router.get('/register',registerController.getRegisterData)
+  router.get('/login',loginController.getLoginData)
+  router.get('/',categoryController.getAllData)
+  router.get('/index',categoryController.getAllData)
+  router.get("/shop-grid/:id", shopgridController.getProductInfo);
+  router.get("/shop-grid/", shopgridController.getAllProducts);
+  router.get("/shop-details/:id", shopDetailsController.getProductInfo);
+  router.get("/contact",contactUsController.getcontactUsInfo );
+  router.get("/checkout",checkoutController.getCheckoutData)
+  router.get("/shoping-cart",shopingCartController.getShopingCartData)
+  router.get('/addtocart/:id',shopingCartController.addToCart)
+  router.get('/deleteProductFromCart/:id',shopingCartController.deleteProduct)
+
+
+  router.post('/register',registerController.registerUser)
+  router.post('/login',loginController.loginUser)
+  router.post('/sendmail',contactUsController.sendEmail);
+  router.post('/order',checkoutController.saveOrder);
+  
+
+
+module.exports = router;
