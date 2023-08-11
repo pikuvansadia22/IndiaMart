@@ -22,6 +22,11 @@ const checkoutController = require('./controllers/checkoutController')
   router.get('/addtocart/:id',shopingCartController.addToCart)
   router.get('/deleteProductFromCart/:id',shopingCartController.deleteProduct)
 
+  router.get('/profile', profileController.getLoginData)
+
+  router.get("/aboutus", function (req, res) {
+    res.render('aboutus');
+  });
 
   router.post('/register',registerController.registerUser)
   router.post('/login',loginController.loginUser)
