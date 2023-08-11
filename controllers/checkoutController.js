@@ -6,10 +6,11 @@ const order = require('../models/order')
 const user = require('../models/user')
 
 var session,cartdetails;
+var productdetails = [];
 exports.getCheckoutData = async function (req, res) {
   session = req.session;
+  productdetails=[];
  cartdetails = await cart.find({ is_activated: true })
-  var productdetails = [];
   for (let i = 0; i < cartdetails.length; i++) {
     var productinfo = await product.findOne({ _id: cartdetails[i].product_id })
     if (productinfo != null) {
@@ -33,12 +34,13 @@ exports.saveOrder = async function (req, res) {
     phone: req.body.phone,
     ordernotes: req.body.ordernotes,
   })
-  newOrder.save().then()
+newOrder.save().then()
   {
-    // updateUser(req,res,address_id)
-    // deactivateCart(req,res)
+    updateUser(req,res,address_id)
+    deactivateCart(req,res)
+    res.send("<h1> Your order placed successfully.. you will be redirecting to home screen soon"+
+    "<script> setTimeout(function(){  window.location.href = '/index';}, 2000);</script> </h1>")
   }
-
 }
 
 saveAddress = async function (req, res) {
@@ -51,11 +53,10 @@ saveAddress = async function (req, res) {
     state: req.body.state,
     zipcode: req.body.zipcode,
   })
-  newAddress.save().then(savedDoc => {
-    console.info(savedDoc)
-    add_id=savedDoc._id;
-  });
-  return add_id;
+  newAddress.save()
+  const addresses=await address.findOne({apartment:req.body.apartment,street:req.body.street,zipcode:req.body.zipcode})
+  console.info("address data is :" + addresses)
+  return addresses._id;
 }
   updateUser=async function(req,res,address_id)
   {

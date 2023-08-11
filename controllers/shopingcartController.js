@@ -24,12 +24,12 @@ exports.addToCart = async function (req, res) {
 
   const cartInfo = await cart.findOne({ product_id: req.params.id, user_id: session.user_id, is_activated:true })
   if (cartInfo != null) {
-    console.info("cart infro getting : " + cartInfo.quantiy)
-    const filter = { product_id: req.params.id, user_id: session.user_id, is_activated:true  };
+    console.info("cart infro getting : " + cartInfo)
     var newQuantity = BigInt(cartInfo.quantiy + BigInt(1))
     console.info("new quantity is: " + newQuantity)
     const update = { quantiy: newQuantity };
-    cart.findOneAndUpdate(filter, update)
+   const newData= await cart.findByIdAndUpdate({_id:cartInfo._id}, update,{new:true})
+   console.info("new data is: "+ newData)
   } else {
     var newCart = new cart({
       product_id: req.params.id,
