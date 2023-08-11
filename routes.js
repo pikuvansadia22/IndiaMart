@@ -9,6 +9,7 @@ const contactUsController = require('./controllers/contactUsController')
 const shopingCartController = require('./controllers/shopingcartController')
 const checkoutController = require('./controllers/checkoutController')
 const profileController = require('./controllers/profileController')
+const aboutController = require('./controllers/aboutController')
 
   router.get('/register',registerController.getRegisterData)
   router.get('/login',loginController.getLoginData)
@@ -25,9 +26,7 @@ const profileController = require('./controllers/profileController')
 
   router.get('/profile', profileController.getLoginData)
 
-  router.get("/aboutus", function (req, res) {
-    res.render('aboutus');
-  });
+  router.get("/aboutus", aboutController.getLoginData)
 
   router.post('/register',registerController.registerUser)
   router.post('/login',loginController.loginUser)
