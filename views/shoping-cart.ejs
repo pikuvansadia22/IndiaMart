@@ -72,7 +72,9 @@
                             <li>Subtotal <span>$<%= toatal %></span></li>
                             <li>Total <span>$<%= toatal %></span></li>
                         </ul>
+                        <% if (products.length>0) { %>
                         <a href="/checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <%}%>
                     </div>
                 </div>
             </div>
