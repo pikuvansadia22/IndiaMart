@@ -10,6 +10,8 @@ const shopingCartController = require('./controllers/shopingcartController')
 const checkoutController = require('./controllers/checkoutController')
 const profileController = require('./controllers/profileController')
 const aboutController = require('./controllers/aboutController')
+const categoryController = require('./controllers/categoryController')
+const productController = require('./controllers/productController');
 
   router.get('/register',registerController.getRegisterData)
   router.get('/login',loginController.getLoginData)
@@ -28,6 +30,9 @@ const aboutController = require('./controllers/aboutController')
   router.get('/profile', profileController.getLoginData)
 
   router.get("/aboutus", aboutController.getLoginData)
+
+  router.get("/category", categoryController.getLoginData)
+  router.get('/product', productController.getLoginData)
 
   router.post('/register',registerController.registerUser)
   router.post('/login',loginController.loginUser)

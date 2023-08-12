@@ -56,7 +56,7 @@
                                     {
                                         class_name="";
                                     }%>
-                                    <a class="ml-4 "   href="/index/<%= categories[i]._id %>"><li  class="<%= class_name %>"> <%= categories[i].name %> </li></a>
+                                    <a class="ml-4 "  href="/index/<%= categories[i]._id %>"><li  class="<%= class_name %>"> <%= categories[i].name %> </li></a>
                                 <%}%>
                              
                             </ul>
@@ -67,7 +67,7 @@
                     <% for(var i=0; i <products.length; i++) { %>
                         <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                             <div class="featured__item">
-                                <div class="featured__item__pic set-bg" data-setbg=  "/<%= products[i].image %>">
+                                <div class="featured__item__pic set-bg" data-setbg="/<%= products[i].image %>">
                                     <ul class="featured__item__pic__hover">
                                         <li><a href="/addtocart/<%= products[i]._id %>"><i class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
@@ -121,7 +121,7 @@
                                     <% for(var i=0; i <3; i++) { %>
                                         <a href="/shop-details" class="latest-product__item">
                                             <div class="latest-product__item__pic">
-                                                <img src="<%= products[i].image %>" alt="">
+                                                <img src="/<%= products[i].image %>" alt="">
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6><%= products[i].name %></h6>
