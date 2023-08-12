@@ -18,6 +18,7 @@ const productController = require('./controllers/productController');
   router.get('/',homeController.getAllData)
   router.get('/index',homeController.getAllData)
   router.get('/index/:id',homeController.getProductInfo)
+  router.get("/logout",homeController.logoutUser)
   router.get("/shop-grid/:id", shopgridController.getProductInfo);
   router.get("/shop-grid/", shopgridController.getAllProducts);
   router.get("/shop-details/:id", shopDetailsController.getProductInfo);
