@@ -15,6 +15,7 @@ const aboutController = require('./controllers/aboutController')
   router.get('/login',loginController.getLoginData)
   router.get('/',homeController.getAllData)
   router.get('/index',homeController.getAllData)
+  router.get('/index/:id',homeController.getProductInfo)
   router.get("/shop-grid/:id", shopgridController.getProductInfo);
   router.get("/shop-grid/", shopgridController.getAllProducts);
   router.get("/shop-details/:id", shopDetailsController.getProductInfo);

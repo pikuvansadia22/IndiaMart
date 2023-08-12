@@ -47,9 +47,16 @@
                         </div>
                         <div class="featured__controls">
                             <ul>
-                                <li class="active" data-filter="*">All</li>
-                                <% for(var i=0; i <categories.length; i++) { %>
-                                <li data-filter=".oranges"> <%= categories[i].name %></li>
+                                <% var class_name=""; for(var i=0; i <categories.length; i++) {  %>
+                                    <% if(products[0].category_id == categories[i]._id) 
+                                    {
+                                        class_name="active";
+                                    }
+                                    else
+                                    {
+                                        class_name="";
+                                    }%>
+                                    <a class="ml-4 "   href="/index/<%= categories[i]._id %>"><li  class="<%= class_name %>"> <%= categories[i].name %> </li></a>
                                 <%}%>
                              
                             </ul>
@@ -60,7 +67,7 @@
                     <% for(var i=0; i <products.length; i++) { %>
                         <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                             <div class="featured__item">
-                                <div class="featured__item__pic set-bg" data-setbg=  "<%= products[i].image %>">
+                                <div class="featured__item__pic set-bg" data-setbg=  "/<%= products[i].image %>">
                                     <ul class="featured__item__pic__hover">
                                         <li><a href="/addtocart/<%= products[i]._id %>"><i class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
