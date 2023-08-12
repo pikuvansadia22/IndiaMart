@@ -22,3 +22,8 @@ exports.getProductInfo = async function (req, res) {
         res.send('Fail Data');
     }
 }
+
+exports.logoutUser = async function (req, res) {
+    req.session.destroy();
+        res.redirect('login')
+}
