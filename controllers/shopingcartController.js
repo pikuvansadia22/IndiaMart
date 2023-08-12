@@ -3,9 +3,21 @@ const cart = require('../models/cart')
 const product = require('../models/product')
 
 var session;
+
 exports.getShopingCartData = async function (req, res) {
   session = req.session;
-  const cartdetails = await cart.find({is_activated:true })
+  const cartdetails = getAllCartData()
+  const productData=getAllProductsFromCart(cartdetails)
+  res.render('shoping-cart', { title_page:"cart",products: productData, user_id: session.user_id, firstname: session.firstname, lastname: session.lastname, email: session.email })
+}
+
+var getAllCartData=exports.getAllCartData=async function()
+{
+  return await cart.find({is_activated:true })
+}
+
+var getAllProductsFromCart=exports.getAllProductsFromCart=async function(cartdetails)
+{
   var productdetails = [];
   for (let i = 0; i < cartdetails.length; i++) {
     var productinfo = await product.findOne({ _id: cartdetails[i].product_id })
@@ -14,9 +26,8 @@ exports.getShopingCartData = async function (req, res) {
       productdetails.push(productinfo)
     }
   }
-  res.render('shoping-cart', { products: productdetails, user_id: session.user_id, firstname: session.firstname, lastname: session.lastname, email: session.email })
+  return productdetails;
 }
-
 
 
 exports.addToCart = async function (req, res) {
@@ -38,16 +49,9 @@ exports.addToCart = async function (req, res) {
     })
     newCart.save();
   }
-  const cartdetails = await cart.find({ is_activated:true })
-  var productdetails = [];
-  for (let i = 0; i < cartdetails.length; i++) {
-    var productinfo = await product.findOne({ _id: cartdetails[i].product_id })
-    if (productinfo != null) {
-      productinfo.quantity = cartdetails[i].quantiy
-      productdetails.push(productinfo)
-    }
-  }
-  res.render('shoping-cart', { products: productdetails, user_id: session.user_id, firstname: session.firstname, lastname: session.lastname, email: session.email })
+  const cartdetails = getAllCartData()
+  const productData=getAllProductsFromCart(cartdetails)
+  res.render('shoping-cart', {title_page:"cart", products: productData, user_id: session.user_id, firstname: session.firstname, lastname: session.lastname, email: session.email })
 }
 
 exports.deleteProduct = async function (req, res) {
@@ -58,14 +62,8 @@ exports.deleteProduct = async function (req, res) {
   {
     console.info("deleted successfully")
   }
-  const cartdetails = await cart.find({is_activated:true })
-  var productdetails = [];
-  for (let i = 0; i < cartdetails.length; i++) {
-    var productinfo = await product.findOne({ _id: cartdetails[i].product_id })
-    if (productinfo != null) {
-      productinfo.quantity = cartdetails[i].quantiy
-      productdetails.push(productinfo)
-    }
-  }
-  res.render('shoping-cart', { products: productdetails, user_id: session.user_id, firstname: session.firstname, lastname: session.lastname, email: session.email })
+  const cartdetails = getAllCartData()
+  const productData=getAllProductsFromCart(cartdetails)
+  res.render('shoping-cart', {title_page:"cart", products: productData, user_id: session.user_id, firstname: session.firstname, lastname: session.lastname, email: session.email })
 }
+

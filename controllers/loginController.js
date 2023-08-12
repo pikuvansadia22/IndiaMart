@@ -21,7 +21,7 @@ exports.loginUser = async function (req, res) {
 
 exports.getLoginData = async function (req, res) {
     session = req.session;
-    res.render('login', {user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email})
+    res.render('login', {title_page:"login",user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email})
 }
 
 

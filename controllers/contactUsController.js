@@ -12,7 +12,7 @@ exports.getcontactUsInfo = async function (req, res) {
     const conatctInfo=await contact.findOne({  email: "group5lambton@gmail.com"  })
     if(conatctInfo!=null)
     {
-        res.render('contact',{contact_us:conatctInfo,success:"",user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email})
+        res.render('contact',{title_page:"contact",contact_us:conatctInfo,success:"",user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email})
     }
     else
     {
@@ -67,7 +67,7 @@ exports.sendEmail = async function (req, res) {
       if (err) {
           console.log(err)
       } else {
-         res.render('contact',{contact_us:conatctInfo,success:"Your message has been sent successfully",user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email})
+         res.render('contact',{title_page:"contact",contact_us:conatctInfo,success:"Your message has been sent successfully",user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email})
       }
   });
   } catch (err) {

@@ -26,5 +26,5 @@ exports.registerUser = function (req, res) {
 }
 exports.getRegisterData = async function (req, res) {
   session = req.session;
-  res.render('register', {user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email})
+  res.render('register', {title_page:"register",user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email})
 }

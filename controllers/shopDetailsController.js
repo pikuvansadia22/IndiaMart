@@ -11,7 +11,7 @@ exports.getProductInfo = async function (req, res) {
     const categoryInfo=await category.findOne({ _id : productInfo.category_id})
     if(productInfo!=null)
     {
-        res.render('shop-details',{product:productInfo,category:categoryInfo,user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email })
+        res.render('shop-details',{title_page:"shop-details",product:productInfo,category:categoryInfo,user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email })
     }
     else
     {

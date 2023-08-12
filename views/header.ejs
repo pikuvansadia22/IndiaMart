@@ -9,12 +9,15 @@
     <div class="humberger__menu__logo">
         <a href="#"><img src="/images/logo.png" alt=""></a>
     </div>
-    <div class="humberger__menu__cart">
+    <% var user_login=false %>
+
+    <% if( user_login && ( title_page==="index" || title_page==="about" || title_page==="contact" || title_page==="shop-details" || title_page==="shop-grid")) {%>  
+        <div class="humberger__menu__cart">
         <ul>
-            <li><a href="/checkout"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            <li><a href="/shoping-cart"><i class="fa fa-shopping-bag"></i> </a></li>
         </ul>
-        <div class="header__cart__price">item: <span>$150.00</span></div>
     </div>
+    <% } %>
     <div class="humberger__menu__widget">
         <div class="header__top__right__language">
 
@@ -23,7 +26,8 @@
             <% if(user_id === undefined ) { %>
                 <a href="/login"><i class="fa fa-user"></i> Login
                 </a>
-                <%} else { %>
+                <%} else {
+                    user_login=true %>
                     <a href="/profile"><i class="fa fa-user"></i>
                         <%- firstname+" "+lastname %>
                     </a>
@@ -68,7 +72,8 @@
                             <% if(user_id === undefined ) { %>
                                 <a href=" /login"><i class="fa fa-user"></i> Login
                                 </a>
-                                <%} else { %>
+                                <%} else {
+                                    user_login=true %>
                                     <a href="/profile"><i class="fa fa-user"></i>
                                         <%- firstname+" "+lastname %>
                                     </a>
@@ -96,13 +101,15 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-3">
+            <% if( user_login && ( title_page==="index" || title_page==="about" || title_page==="contact" || title_page==="shop-details" || title_page==="shop-grid")) {%>  
+                      <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="/shoping-cart"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        <li><a href="/shoping-cart"><i class="fa fa-shopping-bag"></i> </a></li>
                     </ul>
                 </div>
             </div>
+            <% } %>
         </div>
         <div class="humberger__open">
             <i class="fa fa-bars"></i>

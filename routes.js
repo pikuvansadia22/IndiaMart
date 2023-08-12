@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const registerController = require('./controllers/registerController')
 const loginController = require('./controllers/loginController')
-const categoryController = require('./controllers/categoryController')
+const homeController = require('./controllers/homeController')
 const shopgridController = require('./controllers/shopgridController')
 const shopDetailsController = require('./controllers/shopDetailsController')
 const contactUsController = require('./controllers/contactUsController')
@@ -13,8 +13,8 @@ const aboutController = require('./controllers/aboutController')
 
   router.get('/register',registerController.getRegisterData)
   router.get('/login',loginController.getLoginData)
-  router.get('/',categoryController.getAllData)
-  router.get('/index',categoryController.getAllData)
+  router.get('/',homeController.getAllData)
+  router.get('/index',homeController.getAllData)
   router.get("/shop-grid/:id", shopgridController.getProductInfo);
   router.get("/shop-grid/", shopgridController.getAllProducts);
   router.get("/shop-details/:id", shopDetailsController.getProductInfo);

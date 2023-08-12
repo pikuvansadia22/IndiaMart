@@ -4,21 +4,15 @@ const product = require('../models/product')
 const address = require('../models/address')
 const order = require('../models/order')
 const user = require('../models/user')
+const cartController = require('./shopingcartController')
+
 
 var session,cartdetails;
-var productdetails = [];
 exports.getCheckoutData = async function (req, res) {
   session = req.session;
-  productdetails=[];
- cartdetails = await cart.find({ is_activated: true })
-  for (let i = 0; i < cartdetails.length; i++) {
-    var productinfo = await product.findOne({ _id: cartdetails[i].product_id })
-    if (productinfo != null) {
-      productinfo.quantity = cartdetails[i].quantiy
-      productdetails.push(productinfo)
-    }
-  }
-  res.render('checkout', { products: productdetails, user_id: session.user_id, firstname: session.firstname, lastname: session.lastname, email: session.email })
+  const cartdetails = cartController.getAllCartData
+  const productData = cartController.getAllProductsFromCart(cartdetails)
+  res.render('checkout', {title_page:"checkout", products: productData, user_id: session.user_id, firstname: session.firstname, lastname: session.lastname, email: session.email })
 }
 
 exports.saveOrder = async function (req, res) {
