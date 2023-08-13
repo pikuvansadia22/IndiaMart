@@ -16,6 +16,7 @@ const productController = require('./controllers/productController');
   router.get('/register',registerController.getRegisterData)
   router.get('/login',loginController.getLoginData)
   router.get('/',homeController.getAllData)
+  router.get('/profile', profileController.getLoginData)
   router.get('/index',homeController.getAllData)
   router.get('/index/:id',homeController.getProductInfo)
   router.get("/logout",homeController.logoutUser)
@@ -27,11 +28,7 @@ const productController = require('./controllers/productController');
   router.get("/shoping-cart",shopingCartController.getShopingCartData)
   router.get('/addtocart/:id',shopingCartController.addToCart)
   router.get('/deleteProductFromCart/:id',shopingCartController.deleteProduct)
-
-  router.get('/profile', profileController.getLoginData)
-
   router.get("/aboutus", aboutController.getLoginData)
-
   router.get("/category", categoryController.getLoginData)
   router.get('/product', productController.getLoginData)
 
