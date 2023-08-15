@@ -14,7 +14,7 @@ exports.loginUser = async function (req, res) {
         if (loginUser.email != "admin@yopmail.com")
             res.redirect('index')
         else
-            res.redirect('category')
+            res.redirect('adminhome')
     }
     else {
         res.send('Invalid username or password');

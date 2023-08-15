@@ -7,6 +7,13 @@ var fs = require('fs');
 
 var session;
 
+exports.getAdminData = async function (req, res) {
+
+  const categories = await category.find()
+  session = req.session;
+  res.render('adminhome', { title_page: "Category", categories: categories, user_id: session.user_id, firstname: session.firstname, lastname: session.lastname, email: session.email })
+}
+
 exports.getLoginData = async function (req, res) {
 
   const categories = await category.find()
