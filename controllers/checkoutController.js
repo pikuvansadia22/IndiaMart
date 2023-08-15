@@ -54,8 +54,11 @@ saveAddress = async function (req, res) {
     state: req.body.state,
     zipcode: req.body.zipcode,
   })
-  newAddress.save()
-  const addresses=await address.findOne({apartment:req.body.apartment,street:req.body.street,zipcode:req.body.zipcode})
+  newAddress.save().then()
+  {
+    console.info("address save successfully")
+  }
+  const addresses=await address.findOne({street:req.body.street,zipcode:req.body.zipcode})
   console.info("address data is :" + addresses)
   return addresses._id;
 }
