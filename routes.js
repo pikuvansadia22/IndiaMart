@@ -29,7 +29,7 @@ const upload = multer({ storage: storage }) // Define multer setup here
 
   router.get('/register',registerController.getRegisterData)
   router.get('/login',loginController.getLoginData)
-  router.get('/',homeController.getAllData)
+  router.get('/',loginController.getLoginData)
   router.get('/profile', profileController.getLoginData)
   router.get('/index',homeController.getAllData)
   router.get('/index/:id',homeController.getProductInfo)
