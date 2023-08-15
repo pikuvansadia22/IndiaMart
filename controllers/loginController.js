@@ -11,7 +11,10 @@ exports.loginUser = async function (req, res) {
         session.firstname = loginUser.firstname
         session.lastname = loginUser.lastname
         session.email = loginUser.email
-        res.redirect('index')
+        if (loginUser.email != "admin@yopmail.com")
+            res.redirect('index')
+        else
+            res.redirect('category')
     }
     else {
         res.send('Invalid username or password');
@@ -21,7 +24,7 @@ exports.loginUser = async function (req, res) {
 
 exports.getLoginData = async function (req, res) {
     session = req.session;
-    res.render('login', {title_page:"login",user_id:session.user_id,firstname:session.firstname,lastname:session.lastname,email:session.email})
+    res.render('login', { title_page: "login", user_id: session.user_id, firstname: session.firstname, lastname: session.lastname, email: session.email })
 }
 
 

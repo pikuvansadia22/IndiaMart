@@ -1,4 +1,6 @@
 const express = require("express");
+var multer = require('multer');
+
 const router = express.Router();
 const registerController = require('./controllers/registerController')
 const loginController = require('./controllers/loginController')
@@ -12,6 +14,18 @@ const profileController = require('./controllers/profileController')
 const aboutController = require('./controllers/aboutController')
 const categoryController = require('./controllers/categoryController')
 const productController = require('./controllers/productController');
+
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname + '-' + Date.now())
+  }
+});
+
+const upload = multer({ storage: storage }) // Define multer setup here
+
 
   router.get('/register',registerController.getRegisterData)
   router.get('/login',loginController.getLoginData)
@@ -36,7 +50,8 @@ const productController = require('./controllers/productController');
   router.post('/login',loginController.loginUser)
   router.post('/sendmail',contactUsController.sendEmail);
   router.post('/order',checkoutController.saveOrder);
-  
+  router.post("/savecategory",upload.single('image'), categoryController.saveCateogry)
+  router.post("/saveproducts",upload.single('image'), productController.saveProducts)
 
 
 module.exports = router;

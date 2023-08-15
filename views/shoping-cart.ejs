@@ -37,7 +37,7 @@
                                  for(var i=0; i <products.length; i++) { %>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="/<%= products[i].image %>" alt="" height="100" width="100">
+                                        <img src="data:image/<%=products[i].image.contentType%>;base64,<%=products[i].image.data.toString('base64')%>" alt="" height="100" width="100">
                                         <h5><%= products[i].name %></h5>
                                     </td>
                                     <td class="shoping__cart__price">
