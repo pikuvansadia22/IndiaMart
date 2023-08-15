@@ -147,11 +147,11 @@
                                     <% for(var i=0; i <3; i++) { %>
                                         <a href="/shop-details" class="latest-product__item">
                                             <div class="latest-product__item__pic">
-                                                <img src="data:image/<%=productsAll[i].image.contentType%>;base64,<%=productsAll[i].image.data.toString('base64')%>" alt="">
+                                                <img src="data:image/<%=productTopRated[i].image.contentType%>;base64,<%=productTopRated[i].image.data.toString('base64')%>" alt="">
                                             </div>
                                             <div class="latest-product__item__text">
-                                                <h6><%= productsAll[i].name %></h6>
-                                                <span>$<%= productsAll[i].price %></span>
+                                                <h6><%= productTopRated[i].name %></h6>
+                                                <span>$<%= productTopRated[i].price %></span>
                                             </div>
                                         </a>
                                         <% } %>
@@ -169,11 +169,11 @@
                                     <% for(var i=0; i <3; i++) { %>
                                         <a href="/shop-details" class="latest-product__item">
                                             <div class="latest-product__item__pic">
-                                                <img src="data:image/<%=productsAll[i].image.contentType%>;base64,<%=productsAll[i].image.data.toString('base64')%>" alt="">
+                                                <img src="data:image/<%=productsReview[i].image.contentType%>;base64,<%=productsReview[i].image.data.toString('base64')%>" alt="">
                                             </div>
                                             <div class="latest-product__item__text">
-                                                <h6><%= productsAll[i].name %></h6>
-                                                <span>$<%= productsAll[i].price %></span>
+                                                <h6><%= productsReview[i].name %></h6>
+                                                <span>$<%= productsReview[i].price %></span>
                                             </div>
                                         </a>
                                         <% } %>
