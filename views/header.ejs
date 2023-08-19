@@ -35,12 +35,33 @@
         </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
-        <ul>
-            <li class="active"><a href="/index">Home</a></li>
-            <li><a href="/shop-grid">Shop</a></li>
+        <%  if ( user_id === undefined)
+                    { %>
+                        <ul>
+                            <li class="active"><a href="/index">Home</a></li>
+                            <li><a href="/shop-grid">Shop</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                  <%  } else {
+                         if((user_id!=undefined && user_id!=null) && email=="admin@yopmail.com")
+                         { %>
 
-            <li><a href="/contact">Contact</a></li>
-        </ul>
+                       
+                        <ul>
+                            <li><a href="/category">Add Category</a></li>
+                            <li><a href="/viewcategories">View Category</a></li>
+                            <li><a href="/product">Add Product</a></li>
+                            <li><a href="/viewproducts">View Products</a></li>
+                            
+                 <%   }
+                 else{ %>
+                    <ul>
+                        <li class="active"><a href="/index">Home</a></li>
+                        <li><a href="/shop-grid">Shop</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+
+                   <%} }%>
     </nav>
     <div id="mobile-menu-wrap"></div>
     <div class="header__top__right__social">
@@ -91,16 +112,45 @@
                     <a href="/index"><img src="/images/logo.png" alt=""></a>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <nav class="header__menu">
+           
+                  <%  if ( user_id === undefined)
+                    { %>
+                        <div class="col-lg-6">
+                            <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="/index">Home</a></li>
+                            <li><a href="/shop-grid">Shop</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                  <%  } else {
+                         if((user_id!=undefined && user_id!=null) && email=="admin@yopmail.com")
+                         { %>
+                            <div class="col-lg-9">
+                                <nav class="header__menu">
+                        <ul>
+                            <li><a href="/category">Add Category</a></li>
+                            <li><a href="/viewcategories">View Category</a></li>
+                            <li><a href="/product">Add Product</a></li>
+                            <li><a href="/viewproducts">View Products</a></li>
+                         </ul>
+                        </nav>
+                    </div>   
+                 <%   }
+                 else{ %>
+                    <div class="col-lg-6">
+                        <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="/index">Home</a></li>
                         <li><a href="/shop-grid">Shop</a></li>
-
                         <li><a href="/contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
+                   <%} }%>
+                    
+              
             <% if( user_login && ( title_page==="index" || title_page==="about" || title_page==="contact" || title_page==="shop-details" || title_page==="shop-grid")) {%>  
                       <div class="col-lg-3">
                 <div class="header__cart">
