@@ -1,3 +1,7 @@
+**To Access Admin Page To do CRUD Operation Use This Credentials
+Email : admin@yopmail.com
+Password : Admin@1234**
+
 # IndiaMart
 
 The purpose of this project is to develop an eCommerce website focused on providing a platform for purchasing
