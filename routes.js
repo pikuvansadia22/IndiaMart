@@ -57,7 +57,10 @@ const upload = multer({ storage: storage }) // Define multer setup here
   router.post('/order',checkoutController.saveOrder);
   router.post("/savecategory",upload.single('image'), categoryController.saveCateogry)
   router.post("/saveproducts",upload.single('image'), productController.saveProducts)
-  
+  router.post("/updatecategory",upload.single('image'), categoryController.updateCateogry)
+  router.get("/deletecategory/:id", categoryController.deleteCategory)
+  router.get("/category/:id", categoryController.getCategoryById);
+  router.get("/viewcategories", categoryController.getViewCategory)
 
 router.get('/viewproducts', productController.getViewProducts)
 router.post("/updateproduct",upload.single('image'), productController.updateProduct)
