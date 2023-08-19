@@ -59,4 +59,11 @@ const upload = multer({ storage: storage }) // Define multer setup here
   router.post("/saveproducts",upload.single('image'), productController.saveProducts)
 
 
+router.get('/viewproducts', productController.getViewProducts)
+router.post("/updateproduct",upload.single('image'), productController.updateProduct)
+router.get("/deleteproduct/:id", productController.deleteProduct)
+router.get("/product/:id", productController.getProductById);
+
+
+
 module.exports = router;
