@@ -14,8 +14,7 @@ const profileController = require('./controllers/profileController')
 const aboutController = require('./controllers/aboutController')
 const categoryController = require('./controllers/categoryController')
 const productController = require('./controllers/productController');
-const orderdetailsController = require('./controllers/orderdetailsController')
-
+const orderdetailsController = require('./controllers/orderdetailsController');
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -47,27 +46,22 @@ const upload = multer({ storage: storage }) // Define multer setup here
   router.get("/aboutus", aboutController.getLoginData)
   router.get("/category", categoryController.getLoginData)
   router.get('/product', productController.getLoginData)
+  router.get("/viewcategories", categoryController.getViewCategory)
   router.get('/adminhome', categoryController.getAdminData)
+  router.get("/category/:id", categoryController.getCategoryById);
+  router.get('/viewproducts', productController.getViewProducts)
+  router.post("/updateproduct",upload.single('image'), productController.updateProduct)
+  router.post("/saveproducts",upload.single('image'), productController.saveProducts)
+  router.get("/deleteproduct/:id", productController.deleteProduct)
   router.get("/orderdetails/:id", orderdetailsController.getOrderDetails);
-  
-
   router.post('/register',registerController.registerUser)
   router.post('/login',loginController.loginUser)
   router.post('/sendmail',contactUsController.sendEmail);
   router.post('/order',checkoutController.saveOrder);
   router.post("/savecategory",upload.single('image'), categoryController.saveCateogry)
-  router.post("/saveproducts",upload.single('image'), productController.saveProducts)
   router.post("/updatecategory",upload.single('image'), categoryController.updateCateogry)
   router.get("/deletecategory/:id", categoryController.deleteCategory)
-
-  router.get("/category/:id", categoryController.getCategoryById);
-  router.get("/viewcategories", categoryController.getViewCategory)
-  
-router.get('/viewproducts', productController.getViewProducts)
-router.post("/updateproduct",upload.single('image'), productController.updateProduct)
-router.get("/deleteproduct/:id", productController.deleteProduct)
-router.get("/product/:id", productController.getProductById);
-
+  router.get("/product/:id", productController.getProductById);
 
 
 module.exports = router;
