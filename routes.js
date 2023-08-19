@@ -14,6 +14,8 @@ const profileController = require('./controllers/profileController')
 const aboutController = require('./controllers/aboutController')
 const categoryController = require('./controllers/categoryController')
 const productController = require('./controllers/productController');
+const orderdetailsController = require('./controllers/orderdetailsController')
+
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -46,7 +48,7 @@ const upload = multer({ storage: storage }) // Define multer setup here
   router.get("/category", categoryController.getLoginData)
   router.get('/product', productController.getLoginData)
   router.get('/adminhome', categoryController.getAdminData)
-
+  router.get("/orderdetails/:id", orderdetailsController.getOrderDetails);
   
 
   router.post('/register',registerController.registerUser)
