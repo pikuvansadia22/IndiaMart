@@ -1,0 +1,68 @@
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/images/breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Category</h2>
+                    <div class="breadcrumb__option">
+                        <a href="/category">Category</a>
+                        <span>Category List</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Category Section Begin -->
+<section class="checkout spad">
+    <div class="container">
+      
+        <!-- TABLE CONSTRUCTION -->
+        <div class="row">
+            <div class="col-lg-3">
+
+            </div>
+            <div class="col-lg-6">
+                <h3 class="text-center">Category Fields From Database</h1>
+                <table  class="table table-bordered mt-4 text-center table-striped" >
+                    <thead >
+                        <th scope="row">Name</th>
+                        <th scope="row">Image</th>
+                        <th scope="row">Edit</th>
+                        <th scope="row">Delete</th>
+                    </thead>
+                    <!-- LOOP TO FETCH DATA FROM DATABASE -->
+                    <% for(var i=0;i<categories.length;i++) { %>
+                        <tr >
+                            <!-- FETCHING DATA FROM EACH
+                            ROW OF EVERY COLUMN -->
+                            <td >
+                                <%= categories[i].name %>
+                            </td>
+                            <td>
+                                <% if (categories[i].image && categories[i].image.data) { %>
+                                    <img height="150" width="150"
+                                        src="data:image/<%=categories[i].image.contentType%>;base64,<%=categories[i].image.data.toString('base64')%>" />
+                                    <% } %>
+                            </td>
+                            <td >
+                                <a href="/category/<%=categories[i]._id%>">Edit Details</a>
+                            </td>
+                            <td >
+                                <a href="/deletecategory/<%=categories[i]._id%>">Delete Details</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                </table>
+            </div>
+            <div class="col-lg-3">
+                
+            </div>
+        </div>
+       
+    </div>
+</section>
+<!-- Category Section End -->
